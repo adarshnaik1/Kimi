@@ -1,0 +1,25 @@
+{{define "content"}}
+
+<h1>Kimi- The Blog Platform</h1>
+
+<!-- The form which the user can fill to submit a blo post-->
+<form hx-post="/post" hx-target="#posts" hx-swap="beforeend">
+    <input type="text", placeholder="Title", required>
+    <textarea name="content" placeholder="Content" id="#content"></textarea>
+    <button type="submit" data-variant="secondary">Create Post</button>
+
+</form>
+
+<hr>
+<!--Button to load the posts-->
+<button data-variant="primary" hx-get="/posts" hx-target="#posts">
+     Load Posts
+</button>
+
+<!--The area where the posts will be rendered-->
+<div id="posts">
+
+</div>
+
+{{end}}
+
