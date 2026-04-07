@@ -14,7 +14,7 @@ func Newrouter() *http.ServeMux{
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	mux.HandleFunc("/",HomeHandler)
-	mux.HandleFunc("/posts",PostHandler)
+	mux.HandleFunc("/post",PostHandler)
 	// mux.HandleFunc("/posts",GetPostsHandler)
 	
 	return mux

@@ -34,6 +34,7 @@ func HomeHandler(w http.ResponseWriter,  r * http.Request){
 
 //Handler to POST a post
 func PostHandler( w http.ResponseWriter, r *http.Request){
+	fmt.Println("We have entered the post handler")
 	if r.Method != http.MethodPost{
 		http.Error(w,"Invalid Method- Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -42,16 +43,26 @@ func PostHandler( w http.ResponseWriter, r *http.Request){
 	err := r.ParseForm()
 	if err != nil{
 		http.Error(w,"Bad Request", http.StatusBadRequest)
+		return
 
 	}
 	//Title and the Content have been figured out
 	title := r.FormValue("title")
 	content := r.FormValue("content")
+
+	//Debugging statemtent
+	fmt.Println("title:", title)
+	fmt.Println("content:", content)
+
 	post := Post{Title:title, Content:content}
 
 	allposts = append(allposts,post )
 	fmt.Println("The data was appended successfully")
 
+	err = templates.ExecuteTemplate(w,"posts",allposts)
+	if err != nil{
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 
 }
 

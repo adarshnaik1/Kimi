@@ -3,11 +3,9 @@
 <h1 class="headings">Kimi- The Blog Platform</h1>
 
 <!-- The form which the user can fill to submit a blo post-->
-<form hx-post="/post" hx-target="#posts" hx-swap="beforeend">
-    <div id="inputarea">
-        <input type="text", placeholder="Title" name="title", required >
-    </div>
-    
+<form hx-post="/post" hx-target="#posts" hx-swap="innerHTML">
+     
+    <input type="text", placeholder="Title" name="title", required >
     <textarea name="content" placeholder="Content" id="#content"></textarea>
     <button type="submit" data-variant="secondary">Create Post</button>
 
