@@ -1,10 +1,13 @@
 {{define "content"}}
 
-<h1>Kimi- The Blog Platform</h1>
+<h1 class="headings">Kimi- The Blog Platform</h1>
 
 <!-- The form which the user can fill to submit a blo post-->
 <form hx-post="/post" hx-target="#posts" hx-swap="beforeend">
-    <input type="text", placeholder="Title", required>
+    <div id="inputarea">
+        <input type="text", placeholder="Title" name="title", required >
+    </div>
+    
     <textarea name="content" placeholder="Content" id="#content"></textarea>
     <button type="submit" data-variant="secondary">Create Post</button>
 
@@ -18,7 +21,7 @@
 
 <!--The area where the posts will be rendered-->
 <div id="posts">
-
+<!--The posts will be renderd here-->
 </div>
 
 {{end}}
